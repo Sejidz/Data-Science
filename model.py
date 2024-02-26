@@ -14,43 +14,9 @@ from bokeh.plotting import figure, show
 #from bokeh.layouts import row, column, gridplot  # noqa
 #from bokeh.models import TabPanel  # noqa
 
-# Prepare the datamode/
-sales_06 = pd.read_csv(
-    'assignment1 data/sales_202106.csv'
-)
-sales_07 = pd.read_csv(
-    'assignment1 data/sales_202107.csv'
-)
-sales_08 = pd.read_csv(
-    'assignment1 data/sales_202108.csv'
-)
-sales_09 = pd.read_csv(
-    'assignment1 data/sales_202109.csv'
-)
-sales_10 = pd.read_csv(
-    'assignment1 data/sales_202110.csv'
-)
 
 
-combined_sales = pd.concat([sales_06, sales_07, sales_08, sales_09, sales_10])
 
-print(combined_sales.head())
-combined_sales.to_csv('combined_sales.csv', index=False)
-
-print("Columns 6th monts")
-print(sales_06.columns)
-
-print("Columns 7th monts")
-print(sales_07.columns)
-
-print("Columns 8th monts")
-print(sales_08.columns)
-
-print("Columns 9th monts")
-print(sales_09.columns)
-
-print("Columns 10th monts")
-print(sales_10.columns)
 
 
 
