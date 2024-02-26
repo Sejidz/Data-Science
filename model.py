@@ -36,7 +36,12 @@ sales_11 = pd.read_csv(
 sales_12 = pd.read_csv(
     'assignment1 data/sales_202112.csv'
 )
-#print(sales_06.head())
+
+combined_sales = pd.concat([sales_06, sales_07, sales_08, sales_09, sales_10, sales_11, sales_12])
+print(combined_sales.head())
+combined_sales.to_csv('combined_sales.csv', index=False)
+print(sales_06.head())
+#print(sales_06.columns)
 
 
 x = [1, 2, 1]
@@ -61,5 +66,5 @@ fig.circle(x=x, y=y, color="green", size=10, alpha=0.5)
 # Organize the layout
 
 # Preview and save
-show(fig)  # See what I made, and save if I like it
+#show(fig)  # See what I made, and save if I like it
 
