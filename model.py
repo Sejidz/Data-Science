@@ -30,14 +30,10 @@ sales_09 = pd.read_csv(
 sales_10 = pd.read_csv(
     'assignment1 data/sales_202110.csv'
 )
-sales_11 = pd.read_csv(
-    'assignment1 data/sales_202111.csv'
-)
-sales_12 = pd.read_csv(
-    'assignment1 data/sales_202112.csv'
-)
 
-combined_sales = pd.concat([sales_06, sales_07, sales_08, sales_09, sales_10, sales_11, sales_12])
+
+combined_sales = pd.concat([sales_06, sales_07, sales_08, sales_09, sales_10])
+
 print(combined_sales.head())
 combined_sales.to_csv('combined_sales.csv', index=False)
 
@@ -55,12 +51,6 @@ print(sales_09.columns)
 
 print("Columns 10th monts")
 print(sales_10.columns)
-
-print("Columns 11th monts")
-print(sales_11.columns)
-
-print("Columns 12th monts")
-print(sales_12.columns)
 
 
 
