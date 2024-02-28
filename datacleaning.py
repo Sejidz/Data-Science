@@ -33,9 +33,13 @@ combined_sales_cleaned = pd.read_csv('combined_sales.csv', usecols=columns_to_in
 combined_sales_cleaned.to_csv('combined_sales_cleaned.csv', index=False)
 
 filtered_df = combined_sales_cleaned[combined_sales_cleaned['Product id'].str.contains("com.vansteinengroentjes.apps.ddfive")]
-filtered_df.to_csv('filtered.csv', index=False)
+filtered = filtered_df[~filtered_df['Transaction Type'].isin(['Charge refund', 'Google fee refund', 'Tax refund', 'Tax'])]
+filtered.to_csv('filtered.csv', index=False)
 
 
+
+
+#Start with cleaning last two months
 sales_11 = pd.read_csv(
     'assignment1 data/sales_202111.csv'
 )
