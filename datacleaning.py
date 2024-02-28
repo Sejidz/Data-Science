@@ -57,3 +57,9 @@ new_column_names = {'Order Charged Date': 'Transaction Date', 'Financial Status'
 # Rename columns
 combined_sales_last.rename(columns=new_column_names, inplace=True)
 combined_sales_last.to_csv('combined_sales_last.csv', index=False)
+
+exchange_rates = pd.read_csv('combined_sales.csv', usecols=['Buyer Currency', 'Currency Conversion Rate'])
+exchange_rates_kort = exchange_rates[exchange_rates['Buyer Currency'].duplicated() == False]
+
+
+exchange_rates_kort.to_csv('exchange_rates_kort.csv', index=False)
