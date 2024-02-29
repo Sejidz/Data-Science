@@ -47,7 +47,7 @@ sales_12 = pd.read_csv(
     'assignment1 data/sales_202112.csv'
 )
 # Combine the data into a single DataFrame
-combined_sales_last = pd.concat([sales_11, sales_12])
+combined_sales_last_df = pd.concat([sales_11, sales_12])
 
 
 
@@ -55,11 +55,46 @@ combined_sales_last = pd.concat([sales_11, sales_12])
 new_column_names = {'Order Charged Date': 'Transaction Date', 'Financial Status': 'Transaction Type', 'Product ID': 'Product id', 'SKU ID': 'Sku Id', 'Country of Buyer': 'Buyer Country', 'Postal Code of Buyer': 'Buyer Postal Code', 'Charged Amount': 'Amount (Buyer Currency)'}
 
 # Rename columns
-combined_sales_last.rename(columns=new_column_names, inplace=True)
-combined_sales_last.to_csv('combined_sales_last.csv', index=False)
+combined_sales_last_df.rename(columns=new_column_names, inplace=True)
+combined_sales_last = combined_sales_last_df[~combined_sales_last_df['Transaction Type'].isin(['Refund'])]
+combined_sales_last = combined_sales_last[~combined_sales_last['Currency of Sale'].isin(['COP', 'CRC', 'NZD'])]
+combined_sales_last = combined_sales_last[combined_sales_last['Product id'].str.contains("com.vansteinengroentjes.apps.ddfive")]
+
+
+
+
+
 
 exchange_rates = pd.read_csv('combined_sales.csv', usecols=['Buyer Currency', 'Currency Conversion Rate'])
 exchange_rates_kort = exchange_rates[exchange_rates['Buyer Currency'].duplicated() == False]
-
-
 exchange_rates_kort.to_csv('exchange_rates_kort.csv', index=False)
+
+
+
+
+data_dict = {}
+# Iterate over the data and add it to the dictionary
+for ind in exchange_rates_kort.index:
+    key, value = exchange_rates_kort['Buyer Currency'][ind], exchange_rates_kort['Currency Conversion Rate'][ind]
+    data_dict[key] = value
+
+
+
+step = 1
+for index, row in combined_sales_last.iterrows():
+    step += 1
+    price = 0
+    price = row["Amount (Buyer Currency)"]
+    if type(price) == str:
+        price = price.replace(',', '')
+    price = float(price)
+    currency = row['Currency of Sale']
+    print (currency, price, data_dict[currency])
+    price = price * data_dict[currency]
+    print (price)
+
+    combined_sales_last.at[step,'Amount (Merchant Currency)'] = price 
+
+#combined_sales_last.rename(columns=new_column_names, inplace=True)
+
+combined_sales_last.to_csv('combined_sales_last.csv', index=False)
