@@ -79,22 +79,34 @@ for ind in exchange_rates_kort.index:
     data_dict[key] = value
 
 
+# Reset the index of the DataFrame to ensure sequential processing
+combined_sales_last.reset_index(drop=True, inplace=True)
 
-step = 1
-for index, row in combined_sales_last.iterrows():
-    step += 1
-    price = 0
+# Iterate over the DataFrame
+for i in range(len(combined_sales_last)):
+    row = combined_sales_last.iloc[i]
+    print(f"Processing row {i+1}")
     price = row["Amount (Buyer Currency)"]
-    if type(price) == str:
-        price = price.replace(',', '')
-    price = float(price)
+    if isinstance(price, str):
+        price = float(price.replace(',', ''))
+    else:
+        price = float(price)
     currency = row['Currency of Sale']
-    print (currency, price, data_dict[currency])
-    price = price * data_dict[currency]
-    print (price)
+    
+    # Check if exchange rate is available
+    if currency in data_dict:
+        exchange_rate = data_dict[currency]
+        price_merchant_currency = price * exchange_rate
+        # Update the DataFrame
+        combined_sales_last.at[i, 'Amount (Merchant Currency)'] = price_merchant_currency
+    else:
+        # Handle missing exchange rates
+        print(f"Exchange rate not found for currency: {currency}")
+        combined_sales_last.at[i, 'Amount (Merchant Currency)'] = np.nan  # or any other suitable action
 
-    combined_sales_last.at[step,'Amount (Merchant Currency)'] = price 
-
-#combined_sales_last.rename(columns=new_column_names, inplace=True)
-
+# Save the updated DataFrame to a CSV file
 combined_sales_last.to_csv('combined_sales_last.csv', index=False)
+
+
+
+
