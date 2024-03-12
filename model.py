@@ -13,19 +13,17 @@ from bokeh.plotting import figure, show
 from bokeh.io import output_notebook
 from bokeh.palettes import Category10
 from bokeh.models import ColumnDataSource
+from bokeh.layouts import row, column
 df = pd.read_csv("combined_sales_last.csv")
 
 # Data preprocessing
 df['Transaction Date'] = pd.to_datetime(df['Transaction Date'])
 df['Day of Week'] = df['Transaction Date'].dt.day_name()
-
 # Segmentation by SKU ID
-# Remove non-numeric characters and convert 'Amount (Buyer Currency)' to numeric
-
 # Group by 'Sku Id' and sum 'Amount (Buyer Currency)' for each group
 sku_sales = df.groupby('Sku Id')['Amount (Merchant Currency)'].sum()
-
-print(sku_sales)
+dayoftheweek_sales = df.groupby('Day of Week')['Amount (Merchant Currency)'].sum()
+print(dayoftheweek_sales)
 # Visualization
 output_file("sales_volume_by_sku_id.html")
 
@@ -40,5 +38,18 @@ p.xaxis.major_label_orientation = "vertical"
 p.xaxis.axis_label = "SKU ID"
 p.yaxis.axis_label = "Sales Volume (In Euro's)"
 
-show(p)
+
+b = figure(x_range=dayoftheweek_sales.index.tolist(), height=350, title="Sales Volume by Day of the Week",
+           toolbar_location=None, tools="")
+
+b.vbar(x=dayoftheweek_sales.index.tolist(), top=dayoftheweek_sales.values, width=0.9, line_color="white")
+
+b.xgrid.grid_line_color = None
+b.y_range.start = 0
+b.xaxis.axis_label = "Day of the Week"
+b.yaxis.axis_label = "Sales Volume (In Euro's)"
+
+
+layout = row(b,p)
+show(layout)
 
