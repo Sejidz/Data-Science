@@ -23,7 +23,7 @@ df['Day of Week'] = df['Transaction Date'].dt.day_name()
 # Group by 'Sku Id' and sum 'Amount (Buyer Currency)' for each group
 sku_sales = df.groupby('Sku Id')['Amount (Merchant Currency)'].sum()
 dayoftheweek_sales = df.groupby('Day of Week')['Amount (Merchant Currency)'].sum()
-print(dayoftheweek_sales)
+dayoftheweek_sales = dayoftheweek_sales.reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
 # Visualization
 output_file("sales_volume_by_sku_id.html")
 
