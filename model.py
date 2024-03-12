@@ -14,7 +14,7 @@ from bokeh.io import output_notebook
 from bokeh.palettes import Category10
 from bokeh.models import ColumnDataSource
 from bokeh.layouts import row, column
-df = pd.read_csv("combined_sales_last.csv")
+df = pd.read_csv("finalcombinedsales.csv")
 
 # Data preprocessing
 df['Transaction Date'] = pd.to_datetime(df['Transaction Date'])

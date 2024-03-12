@@ -138,8 +138,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Jun 12, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,SE,11320,1.72
 "Jun 12, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,45662,2.88
 "Jun 12, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,45662,-0.87
-"Jun 12, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,84128,-4.53
-"Jun 12, 2021",Google fee refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,84128,1.36
 "Jun 12, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,88012,4.53
 "Jun 12, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,88012,-1.36
 "Jun 12, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,88012,2.88
@@ -465,10 +463,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Jul 1, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,72756,-0.69
 "Jul 2, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,27115010,3.51
 "Jul 2, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,27115010,-0.53
-"Jul 2, 2021",Tax,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,27115010,-0.35
-"Jul 2, 2021",Tax,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,27115010,0.06
-"Jul 2, 2021",Tax,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,27115010,0.08
-"Jul 2, 2021",Tax,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,27115010,-0.53
 "Jul 2, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,66046,4.64
 "Jul 2, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,66046,-0.69
 "Jul 2, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,66046,2.95
@@ -879,10 +873,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Jul 26, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,46241,-0.7
 "Jul 26, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,93700000,3.41
 "Jul 26, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,93700000,-0.51
-"Jul 26, 2021",Tax,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,93700000,-0.34
-"Jul 26, 2021",Tax,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,93700000,0.05
-"Jul 26, 2021",Tax,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,93700000,-0.52
-"Jul 26, 2021",Tax,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,BR,93700000,0.08
 "Jul 26, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,97080,4.65
 "Jul 26, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,97080,-0.69
 "Jul 27, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,44432,2.95
@@ -1048,8 +1038,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Aug 5, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,GB,KW17 2QS,2.17
 "Aug 6, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,37347,4.65
 "Aug 6, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,37347,-0.69
-"Aug 6, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,CA,J5K 2E8,-5.05
-"Aug 6, 2021",Google fee refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,CA,J5K 2E8,0.75
 "Aug 6, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,GR,26331,2.05
 "Aug 6, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,98501,4.67
 "Aug 6, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,98501,-0.7
@@ -1071,10 +1059,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Aug 7, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,78130,-0.44
 "Aug 7, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,2.11
 "Aug 7, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,-0.32
-"Aug 7, 2021",Tax,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,-0.21
-"Aug 7, 2021",Tax,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,0.03
-"Aug 7, 2021",Tax,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,0.05
-"Aug 7, 2021",Tax,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,-0.32
 "Aug 7, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,UA,91000,4.76
 "Aug 7, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,UA,91000,-0.71
 "Aug 7, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,UA,91000,3.01
@@ -1097,12 +1081,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Aug 8, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,49727,-0.44
 "Aug 8, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,77565,4.67
 "Aug 8, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,77565,-0.7
-"Aug 8, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,-2.11
-"Aug 8, 2021",Google fee refund,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,0.32
-"Aug 8, 2021",Tax refund,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,-0.03
-"Aug 8, 2021",Tax refund,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,0.21
-"Aug 8, 2021",Tax refund,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,0.32
-"Aug 8, 2021",Tax refund,com.vansteinengroentjes.apps.ddfive,premium,BR,80730000,-0.05
 "Aug 8, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,73068,4.67
 "Aug 8, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,73068,-0.7
 "Aug 8, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,73068,2.97
@@ -1398,8 +1376,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Aug 27, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,CA,t1k0b2,-0.45
 "Aug 27, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,17566,2.96
 "Aug 27, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,17566,-0.44
-"Aug 27, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,premium,US,47040,-2.97
-"Aug 27, 2021",Google fee refund,com.vansteinengroentjes.apps.ddfive,premium,US,47040,0.44
 "Aug 27, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,55025,2.96
 "Aug 27, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,55025,-0.44
 "Aug 27, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,55025,4.65
@@ -1412,8 +1388,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Aug 27, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,91006,-0.44
 "Aug 27, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,75040,4.65
 "Aug 27, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,75040,-0.7
-"Aug 28, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,CA,t1k0b2,-5.03
-"Aug 28, 2021",Google fee refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,CA,t1k0b2,0.75
 "Aug 28, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,GB,BT23 8RH,3.46
 "Aug 28, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,CZ,,3.58
 "Aug 28, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,CZ,,2.06
@@ -1704,8 +1678,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Sep 17, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,72761,2.97
 "Sep 17, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,72761,-0.44
 "Sep 17, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,GB,ME10 1RT,2.16
-"Sep 17, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,33021,-4.66
-"Sep 17, 2021",Google fee refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,33021,0.7
 "Sep 17, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,GR,28100,3.42
 "Sep 17, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,37777,4.68
 "Sep 17, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,37777,-0.7
@@ -1880,8 +1852,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Sep 28, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,60190,2.99
 "Sep 28, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,60190,-0.44
 "Sep 28, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,NL,1016TA,2.1
-"Sep 28, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,22407,-4.69
-"Sep 28, 2021",Google fee refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,22407,0.7
 "Sep 28, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,70544,4.7
 "Sep 28, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,70544,-0.7
 "Sep 28, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,50613,2.99
@@ -1977,7 +1947,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Oct 7, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,IT,22020,3.48
 "Oct 7, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,IT,22020,2.08
 "Oct 7, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,DE,99085,3.56
-"Oct 7, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,DE,99085,-3.56
 "Oct 7, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,45750,3.02
 "Oct 7, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,45750,-0.45
 "Oct 7, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,45750,4.75
@@ -2048,7 +2017,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Oct 11, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,43537,-0.71
 "Oct 11, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,49506,4.75
 "Oct 11, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,49506,-0.71
-"Oct 12, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,DE,40764,-3.56
 "Oct 12, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,47711,4.76
 "Oct 12, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,47711,-0.71
 "Oct 12, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,37863,3.02
@@ -2283,8 +2251,6 @@ Transaction Date,Transaction Type,Product id,Sku Id,Buyer Country,Buyer Postal C
 "Oct 26, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,CA,L5N 2C1,-0.78
 "Oct 26, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,42459,3.01
 "Oct 26, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,premium,US,42459,-0.45
-"Oct 26, 2021",Charge refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,46368,-4.73
-"Oct 26, 2021",Google fee refund,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,46368,0.71
 "Oct 27, 2021",Charge,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,77450,4.73
 "Oct 27, 2021",Google fee,com.vansteinengroentjes.apps.ddfive,unlockcharactermanager,US,77450,-0.71
 "Oct 27, 2021",Charge,com.vansteinengroentjes.apps.ddfive,premium,US,77450,3.0

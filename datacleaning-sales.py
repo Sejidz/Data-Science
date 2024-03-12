@@ -106,7 +106,27 @@ for i in range(len(combined_sales_last)):
 
 # Save the updated DataFrame to a CSV file
 combined_sales_last.to_csv('combined_sales_last.csv', index=False)
+filtered['Transaction Date'] = pd.to_datetime(filtered['Transaction Date'])
+
+# Convert the date column to the desired format
+filtered['Transaction Date'] = filtered['Transaction Date'].dt.strftime('%Y-%m-%d')
 
 
+# Concatenate the DataFrames
+finalcombinedsales = pd.concat([filtered, combined_sales_last], ignore_index=True)
+# Find the index of the column "Amount (Merchant Currency)"
+start_index = finalcombinedsales.columns.get_loc('Amount (Merchant Currency)')
+
+# Drop columns starting from the index of "Amount (Merchant Currency)" onwards
+finalcombinedsales.drop(finalcombinedsales.columns[start_index+1:], axis=1, inplace=True)
+
+# Filter out rows where "Transaction Type" contains "Google fee"
+finalcombinedsales = finalcombinedsales[~finalcombinedsales['Transaction Type'].str.contains("Google fee")]
+finalcombinedsales['Transaction Type'] = finalcombinedsales['Transaction Type'].replace('Charged', 'Charge')
+
+# Convert the date column to datetime format
+
+# Save the modified DataFrame to a new CSV file
+finalcombinedsales.to_csv('finalcombinedsales.csv', index=False)
 
 
