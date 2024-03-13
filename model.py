@@ -11,8 +11,7 @@ import numpy as np  # noqa
 from bokeh.io import output_file
 from bokeh.plotting import figure, show
 from bokeh.io import output_notebook
-from bokeh.palettes import Category10
-from bokeh.models import Tabs
+from bokeh.models.layouts import TabPanel, Tabs
 from bokeh.models import ColumnDataSource, Dropdown, CustomJS
 from bokeh.layouts import row, column
 df = pd.read_csv("finalcombinedsales.csv")
@@ -48,33 +47,17 @@ b.yaxis.axis_label = "Sales Volume (In Euro's)"
 
 
 # Output to file
-output_file('east-west-top-2-tabbed_layout.html', 
-            title='Conference Top 2 Teams Wins Race')
 
 # Increase the plot widths
 
 # Create two panels, one for each conference
-east_panel = Panel(child=p, title='Eastern Conference')
-west_panel = Panel(child=b, title='Western Conference')
+east_panel = TabPanel(child=p, title='sku_sales')
+west_panel = TabPanel(child=b, title='dayoftheweek_sales')
 
 # Assign the panels to Tabs
 tabs = Tabs(tabs=[west_panel, east_panel])
 
 # Show the tabbed layout
-show(tabs)
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 df['Day'] = df['Transaction Date'].dt.day
 df['Month'] = df['Transaction Date'].dt.month
@@ -98,8 +81,15 @@ p_daily_transactions.line(daily_transactions.index, daily_transactions.values, l
 p_monthly_transactions = figure(title="Monthly Transactions", x_axis_label="Month", y_axis_label="Number of Transactions")
 p_monthly_transactions.line(monthly_transactions.index, monthly_transactions.values, line_width=2)
 
+panel1 = TabPanel(child=p_daily_transactions, title='Daily Transactions')
+panel2 = TabPanel(child=p_monthly_transactions, title='Monthly Transactions')
+panel3 = TabPanel(child=p_daily_sales, title='Daily Sales Volume')  
+panel4 = TabPanel(child=p_monthly_sales, title='Monthly Sales Volume')
+# Assign the panels to Tabs
+tabs2 = Tabs(tabs=[panel1, panel2, panel3, panel4])
 
-layout = column(p_daily_sales, p_monthly_sales, p_daily_transactions, p_monthly_transactions)
+
+layout = column(tabs, tabs2)
 show(layout)
 
 
