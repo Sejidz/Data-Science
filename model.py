@@ -71,3 +71,4 @@ p_monthly_transactions.line(monthly_transactions.index, monthly_transactions.val
 layout = column(b,p, p_daily_sales, p_monthly_sales, p_daily_transactions, p_monthly_transactions)
 show(layout)
 
+

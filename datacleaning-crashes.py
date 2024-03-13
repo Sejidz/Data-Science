@@ -1,6 +1,8 @@
 import pandas as pd  # noqa
 import numpy as np  # noqa
 
+
+
 # Prepare the datamode/
 crashes_06 = pd.read_csv(
     'assignment1 data/stats_crashes_202106_overview.csv', encoding='utf-16-le'
@@ -26,8 +28,19 @@ crashes_12 = pd.read_csv(
 # Combine the data into a single DataFrame
 combined_crashes = pd.concat([crashes_06, crashes_07, crashes_08, crashes_09, crashes_10, crashes_11, crashes_12])
 
-combined_crashes['Date'] = pd.to_datetime(combined_crashes['Date'])
+#combined_crashes['Date'] = pd.to_datetime(combined_crashes['Date'])
 
-combined_crashes.to_csv('combined_crashes.csv', index=False)
+# Set the 'date' column as the index
+#combined_crashes.set_index('date', inplace=True)
+
+#keep only the columns date and Daily Crashes
+combined_crashes = combined_crashes[['Date', 'Daily Crashes']]
+
+# Sum um the crashed per month
+crashes_per_month = combined_crashes.groupby(combined_crashes['Date'].str[:7]).sum()
+#Change the date column to only show the month
+crashes_per_month['Date'] = crashes_per_month.index
+
+crashes_per_month.to_csv('crashes_per_month.csv', index=False)
 
 

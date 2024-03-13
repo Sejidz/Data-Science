@@ -27,11 +27,17 @@ ratings_12 = pd.read_csv(
 # Combine the data into a single DataFrame
 combined_ratings = pd.concat([ratings_06, ratings_07, ratings_08, ratings_09, ratings_10, ratings_11, ratings_12])
 
-combined_ratings['Date'] = pd.to_datetime(combined_ratings['Date'])
+#keep only the columns date and Daily Average Rating
+combined_ratings = combined_ratings[['Date', 'Daily Average Rating']]
 
-#combined_ratings = combined_ratings.dropna(subset=['Daily Average Rating'])
+# Sum um the ratings per month
+ratings_per_month = combined_ratings.groupby(combined_ratings['Date'].str[:7]).sum()
 
-combined_ratings.to_csv('combined_ratings.csv', index=False)
+#Change the date column to only show the month
+ratings_per_month['Date'] = ratings_per_month.index
+
+ratings_per_month.to_csv('ratings_per_month.csv', index=False)
+
 
 
 
