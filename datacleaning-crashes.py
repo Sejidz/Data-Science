@@ -35,6 +35,16 @@ combined_crashes = combined_crashes[['Date', 'Daily Crashes']]
 # Sum um the crashed per month
 crashes_per_month = combined_crashes.groupby(combined_crashes['Date'].str[:7]).sum()
 
+# Prepare the datamode
+ratings_per_month = pd.read_csv(
+    'ratings_per_month.csv'
+)
+
+crashes_per_month['Daily Crashes Divided'] = 0
+#Divide the values by the corresponding values in ratings_per_month by a for loop iloc
+for i in range(0, len(ratings_per_month)):
+    crashes_per_month['Daily Crashes Divided'].iloc[i] = crashes_per_month['Daily Crashes'].iloc[i] / ratings_per_month['Daily Average Rating'].iloc[i]
+
 #Change the date column to only show the month
 crashes_per_month['Date'] = crashes_per_month.index
 

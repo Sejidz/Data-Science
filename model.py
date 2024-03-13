@@ -14,9 +14,16 @@ from bokeh.io import output_notebook
 from bokeh.models.layouts import TabPanel, Tabs
 from bokeh.models import ColumnDataSource, Dropdown, CustomJS
 from bokeh.layouts import row, column
+from bokeh.models import DatetimeTickFormatter
 df = pd.read_csv("finalcombinedsales.csv")
+crashes_per_month = pd.read_csv('crashes_per_month.csv')
+ratings_per_month = pd.read_csv('ratings_per_month.csv')
+
+
 
 # Data preprocessing
+crashes_per_month['Date'] = pd.to_datetime(crashes_per_month['Date'])
+ratings_per_month['Date'] = pd.to_datetime(ratings_per_month['Date'])
 df['Transaction Date'] = pd.to_datetime(df['Transaction Date'])
 df['Day of Week'] = df['Transaction Date'].dt.day_name()
 # Segmentation by SKU ID
@@ -25,7 +32,36 @@ sku_sales = df.groupby('Sku Id')['Amount (Merchant Currency)'].sum()
 dayoftheweek_sales = df.groupby('Day of Week')['Amount (Merchant Currency)'].sum()
 dayoftheweek_sales = dayoftheweek_sales.reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
 # Visualization
-output_file("sales_volume_by_sku_id.html")
+output_file("visualisation.html")
+
+fig = figure(x_axis_type='datetime',
+             height=300, width=600,
+             title='Crashes and Ratings per Month',
+             x_axis_label='Date', y_axis_label='Number of Crashes and Ratings', 
+             toolbar_location=None)
+
+# Add data to the figure
+fig.line(crashes_per_month['Date'], crashes_per_month['Daily Crashes'], 
+         legend_label='Crashes',
+         line_width=2,
+         color ='#CE1141')
+
+fig.line(crashes_per_month['Date'], crashes_per_month['Daily Crashes Divided'],
+         legend_label='Daily Crashes Divided by Daily Average Rating' ,
+         line_width=2, 
+         color='#007A33')
+
+fig.line(ratings_per_month['Date'], ratings_per_month['Daily Average Rating'] * 100,
+         legend_label='Daily Average Rating per Month times 100',
+         line_width=2, 
+         color='#0057e7')
+
+# Customize the x-axis
+fig.xaxis.formatter = DatetimeTickFormatter(months=["%b"])
+
+# Move the legend to the upper left corner
+fig.legend.location = 'top_left'
+
 
 p = figure(x_range=sku_sales.index.tolist(), height=350, title="Sales Volume by SKU ID",
            toolbar_location=None, tools="")
@@ -89,7 +125,10 @@ panel4 = TabPanel(child=p_monthly_sales, title='Monthly Sales Volume')
 tabs2 = Tabs(tabs=[panel1, panel2, panel3, panel4])
 
 
-layout = column(tabs, tabs2)
+layout = column(tabs2, tabs)
+#add a row to the layout as fig
+layout = row(layout, fig)
+
 show(layout)
 
 

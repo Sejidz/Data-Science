@@ -7,7 +7,6 @@ from bokeh.io import output_file
 from bokeh.plotting import figure, show
 from bokeh.io import output_notebook
 from bokeh.palettes import Category10
-from bokeh.models.widgets import Panel, Tabs
 from bokeh.models import ColumnDataSource, Dropdown, CustomJS
 from bokeh.layouts import row, column
 from bokeh.models import DatetimeTickFormatter
@@ -39,10 +38,16 @@ fig.line(crashes_per_month['Date'], crashes_per_month['Daily Crashes'],
          line_width=2,
          color ='#CE1141')
 
-fig.line(ratings_per_month['Date'], ratings_per_month['Daily Average Rating'],
-         legend_label='Ratings' ,
+fig.line(crashes_per_month['Date'], crashes_per_month['Daily Crashes Divided'],
+         legend_label='Daily Crashes Divided by Daily Average Rating' ,
          line_width=2, 
          color='#007A33')
+
+fig.line(ratings_per_month['Date'], ratings_per_month['Daily Average Rating'] * 100,
+         legend_label='Daily Average Rating per Month times 100',
+         line_width=2, 
+         color='#0057e7')
+
 
 # Customize the x-axis
 fig.xaxis.formatter = DatetimeTickFormatter(months=["%b"])
