@@ -7,6 +7,7 @@ from bokeh.io import output_file
 from bokeh.plotting import figure, show
 from bokeh.io import output_notebook
 from bokeh.palettes import Category10
+from bokeh.models.widgets import Panel, Tabs
 from bokeh.models import ColumnDataSource, Dropdown, CustomJS
 from bokeh.layouts import row, column
 from bokeh.models import DatetimeTickFormatter
@@ -33,10 +34,10 @@ ratings_per_month['Date'] = pd.to_datetime(ratings_per_month['Date'])
 
 
 # Add data to the figure
-#fig.line(crashes_per_month['Date'], crashes_per_month['Daily Crashes'], 
-         #legend_label='Crashes',
-         #line_width=2,
-         #color ='#CE1141')
+fig.line(crashes_per_month['Date'], crashes_per_month['Daily Crashes'], 
+         legend_label='Crashes',
+         line_width=2,
+         color ='#CE1141')
 
 fig.line(ratings_per_month['Date'], ratings_per_month['Daily Average Rating'],
          legend_label='Ratings' ,

@@ -5,6 +5,7 @@ import numpy as np  # noqa
 ratings_06 = pd.read_csv(
     'assignment1 data/stats_ratings_202106_overview.csv', encoding='utf-16-le'
 )
+
 ratings_07 = pd.read_csv(
     'assignment1 data/stats_ratings_202107_overview.csv', encoding='utf-16-le'
 )
