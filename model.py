@@ -69,7 +69,7 @@ p.vbar(x=sku_sales.index.tolist(), top=sku_sales.values, width=0.9, line_color="
 p.xgrid.grid_line_color = None
 p.y_range.start = 0
 p.xaxis.major_label_orientation = "vertical"
-p.xaxis.axis_label = "SKU ID"
+p.xaxis.axis_label = "Storage Keeping Index ID"
 p.yaxis.axis_label = "Sales Volume (In Euro's)"
 
 b = figure(x_range=dayoftheweek_sales.index.tolist(), height=350, title="Sales Volume by Day of the Week",
@@ -87,11 +87,11 @@ b.yaxis.axis_label = "Sales Volume (In Euro's)"
 # Increase the plot widths
 
 # Create two panels, one for each conference
-east_panel = TabPanel(child=p, title='sku_sales')
-west_panel = TabPanel(child=b, title='dayoftheweek_sales')
+skupanel = TabPanel(child=p, title='Sales Volume by SKU ID')
+daypanel = TabPanel(child=b, title='Sales Volume by day of the week')
 
 # Assign the panels to Tabs
-tabs = Tabs(tabs=[west_panel, east_panel])
+tabs = Tabs(tabs=[skupanel, daypanel])
 
 # Show the tabbed layout
 
@@ -105,22 +105,22 @@ daily_transactions = df.groupby('Day').size()
 monthly_transactions = df.groupby('Month').size()
 
 # Create plots
-p_daily_sales = figure(title="Daily Sales Volume", x_axis_label="Day", y_axis_label="Sales Volume (Merchant Currency)")
+p_daily_sales = figure(title="Daily Sales Volume", x_axis_label="Day", y_axis_label="Sales Volume (In Euro's)")
 p_daily_sales.line(daily_sales.index, daily_sales.values, line_width=2)
 
-p_monthly_sales = figure(title="Monthly Sales Volume", x_axis_label="Month", y_axis_label="Sales Volume (Merchant Currency)")
+p_monthly_sales = figure(title="Monthly Sales Volume", x_axis_label="Month", y_axis_label="Sales Volume (In Euro's)")
 p_monthly_sales.line(monthly_sales.index, monthly_sales.values, line_width=2)
 
-p_daily_transactions = figure(title="Daily Transactions", x_axis_label="Day", y_axis_label="Number of Transactions")
+p_daily_transactions = figure(title="Transactions per day", x_axis_label="Day", y_axis_label="Number of Transactions on that day of each month")
 p_daily_transactions.line(daily_transactions.index, daily_transactions.values, line_width=2)
 
-p_monthly_transactions = figure(title="Monthly Transactions", x_axis_label="Month", y_axis_label="Number of Transactions")
+p_monthly_transactions = figure(title="Transactions per month", x_axis_label="Month", y_axis_label="Number of Transactions in that month")
 p_monthly_transactions.line(monthly_transactions.index, monthly_transactions.values, line_width=2)
 
-panel1 = TabPanel(child=p_daily_transactions, title='Daily Transactions')
-panel2 = TabPanel(child=p_monthly_transactions, title='Monthly Transactions')
-panel3 = TabPanel(child=p_daily_sales, title='Daily Sales Volume')  
-panel4 = TabPanel(child=p_monthly_sales, title='Monthly Sales Volume')
+panel1 = TabPanel(child=p_daily_transactions, title='Transactions per day')
+panel2 = TabPanel(child=p_monthly_transactions, title='Transactions per month')
+panel3 = TabPanel(child=p_daily_sales, title='Sales Volume per day')  
+panel4 = TabPanel(child=p_monthly_sales, title='Sales Volume per month')
 # Assign the panels to Tabs
 tabs2 = Tabs(tabs=[panel1, panel2, panel3, panel4])
 
