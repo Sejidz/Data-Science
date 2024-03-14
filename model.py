@@ -15,6 +15,12 @@ from bokeh.models.layouts import TabPanel, Tabs
 from bokeh.models import ColumnDataSource, Dropdown, CustomJS
 from bokeh.layouts import row, column
 from bokeh.models import DatetimeTickFormatter
+import geopandas as gpd
+from shapely.geometry import Point
+from bokeh.models import GeoJSONDataSource, LinearColorMapper, ColorBar
+from bokeh.palettes import Viridis256
+
+# Read the provided data into a DataFrame
 df = pd.read_csv("finalcombinedsales.csv")
 crashes_per_month = pd.read_csv('crashes_per_month.csv')
 ratings_per_month = pd.read_csv('ratings_per_month.csv')
@@ -33,6 +39,77 @@ dayoftheweek_sales = df.groupby('Day of Week')['Amount (Merchant Currency)'].sum
 dayoftheweek_sales = dayoftheweek_sales.reindex(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'])
 # Visualization
 output_file("visualisation.html")
+
+# Aggregate sales volume by country
+country_mapping = {
+    'US': 'United States of America',
+    'GB': 'United Kingdom',
+    'CA': 'Canada',
+    'DE': 'Germany',
+    'NL': 'Netherlands',
+    'AU': 'Australia',
+    'IT': 'Italy',
+    'SE': 'Sweden',
+    'MX': 'Mexico',
+    'GR': 'Greece',
+    'BR': 'Brazil',
+    'RU': 'Russia',
+    'CZ': 'Czech Republic',
+    'PL': 'Poland',
+    'BE': 'Belgium',
+    'DK': 'Denmark',
+    'UA': 'Ukraine',
+    'FR': 'France',
+    'CH': 'Switzerland',
+    'PH': 'Philippines',
+    'ES': 'Spain',
+    'AT': 'Austria',
+    'ID': 'Indonesia',
+    'ZA': 'South Africa',
+    'IE': 'Ireland',
+    'PR': 'Puerto Rico',
+    'LT': 'Lithuania',
+    'TR': 'Turkey',
+    'MY': 'Malaysia',
+    'PT': 'Portugal',
+    'IL': 'Israel',
+    'NO': 'Norway',
+    'BG': 'Bulgaria',
+    'FI': 'Finland',
+    'AR': 'Argentina'
+    # Add more mappings as needed
+}
+
+# Convert country codes to full names in sales volume data
+df['Buyer Country'] = df['Buyer Country'].map(country_mapping)
+sales_volume_by_country = df.groupby('Buyer Country')['Amount (Merchant Currency)'].sum().reset_index()
+print(sales_volume_by_country)
+# Read the GeoDataFrame containing country geometries
+world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+
+# Merge sales volume data with country geometries
+world = world.merge(sales_volume_by_country, how='left', left_on='name', right_on='Buyer Country')
+
+# Convert GeoDataFrame to GeoJSONDataSource
+geo_source = GeoJSONDataSource(geojson=world.to_json())
+
+# Create color mapper
+color_mapper = LinearColorMapper(palette=Viridis256, low=world['Amount (Merchant Currency)'].min(), high=world['Amount (Merchant Currency)'].max())
+
+# Create Bokeh plot
+r = figure(title="Sales Volume Heatmap by Country", height=600, width=1000)
+r.toolbar_location = None
+r.xgrid.grid_line_color = None
+r.ygrid.grid_line_color = None
+
+# Add country polygons
+r.patches('xs', 'ys', source=geo_source, fill_color={'field': 'Amount (Merchant Currency)', 'transform': color_mapper},
+          line_color='black', line_width=0.5, fill_alpha=0.7)
+
+# Add color bar
+color_bar = ColorBar(color_mapper=color_mapper, label_standoff=12, location=(0, 0))
+r.add_layout(color_bar, 'right')
+
 
 fig = figure(x_axis_type='datetime',
              height=300, width=600,
@@ -127,7 +204,8 @@ tabs2 = Tabs(tabs=[panel1, panel2, panel3, panel4])
 
 layout = column(tabs2, tabs)
 #add a row to the layout as fig
-layout = row(layout, fig)
+layout2 = column(fig, r)
+layout = row(layout, layout2)
 
 show(layout)
 
