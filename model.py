@@ -27,8 +27,6 @@ from bokeh.io import output_file, show, output_notebook, export_png
 from bokeh.models import ColumnDataSource, GeoJSONDataSource, LinearColorMapper, ColorBar, Dropdown, CustomJS, DatetimeTickFormatter, Legend
 from bokeh.plotting import figure, show
 from bokeh.palettes import Category10, brewer
-from bokeh.layouts import row, column
-
 import panel as pn
 import panel.widgets as pnw
 
@@ -216,10 +214,6 @@ tabs2 = Tabs(tabs=[panel1, panel2, panel3, panel4])
 
 
 ratings_per_country = pd.read_csv('ratings_per_country.csv')
-
-
-output_file('crashes-ratings.html', 
-            title='Ratings per country')
 
 colors = Category10[10] * (len(ratings_per_country['Country'].unique()) // len(Category10[10]) + 1)
 fig2 = figure(
