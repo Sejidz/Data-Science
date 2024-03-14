@@ -82,5 +82,80 @@ ratings_per_month['Date'] = ratings_per_month.index
 ratings_per_month.to_csv('ratings_per_month.csv', index=False)
 
 
+# Prepare the datamode/
+ratings_country_06 = pd.read_csv(
+    'assignment1 data/stats_ratings_202106_country.csv', encoding='utf-16-le'
+)
+
+
+ratings_country_06['Date'] = pd.to_datetime(ratings_country_06['Date'])
+ratings_country_06 = ratings_country_06.groupby('Country').resample('ME', on='Date')['Total Average Rating'].mean().reset_index()
+
+
+ratings_country_07 = pd.read_csv(
+    'assignment1 data/stats_ratings_202107_country.csv', encoding='utf-16-le'
+)
+ratings_country_07['Date'] = pd.to_datetime(ratings_country_07['Date'])
+ratings_country_07 = ratings_country_07.groupby('Country').resample('ME', on='Date')['Total Average Rating'].mean().reset_index()
+
+
+ratings_country_08 = pd.read_csv(
+    'assignment1 data/stats_ratings_202108_country.csv', encoding='utf-16-le'
+)
+ratings_country_08['Date'] = pd.to_datetime(ratings_country_08['Date'])
+ratings_country_08 = ratings_country_08.groupby('Country').resample('ME', on='Date')['Total Average Rating'].mean().reset_index()
+
+ratings_country_09 = pd.read_csv(
+    'assignment1 data/stats_ratings_202109_country.csv', encoding='utf-16-le'
+)
+ratings_country_09['Date'] = pd.to_datetime(ratings_country_09['Date'])
+ratings_country_09 = ratings_country_09.groupby('Country').resample('ME', on='Date')['Total Average Rating'].mean().reset_index()
+
+ratings_country_10 = pd.read_csv(
+    'assignment1 data/stats_ratings_202110_country.csv', encoding='utf-16-le'
+)
+ratings_country_10['Date'] = pd.to_datetime(ratings_country_10['Date'])
+ratings_country_10 = ratings_country_10.groupby('Country').resample('ME', on='Date')['Total Average Rating'].mean().reset_index()
+
+ratings_country_11 = pd.read_csv(
+    'assignment1 data/stats_ratings_202111_country.csv', encoding='utf-16-le'
+)
+ratings_country_11['Date'] = pd.to_datetime(ratings_country_11['Date'])
+ratings_country_11 = ratings_country_11.groupby('Country').resample('ME', on='Date')['Total Average Rating'].mean().reset_index()
+
+ratings_country_12 = pd.read_csv(
+    'assignment1 data/stats_ratings_202112_country.csv', encoding='utf-16-le'
+)
+ratings_country_12['Date'] = pd.to_datetime(ratings_country_12['Date'])
+ratings_country_12 = ratings_country_12.groupby('Country').resample('ME', on='Date')['Total Average Rating'].mean().reset_index()
+
+# Combine the data into a single DataFrame
+combined_ratings_country = pd.concat([ratings_country_06, ratings_country_07, ratings_country_08, ratings_country_09, ratings_country_10, ratings_country_11, ratings_country_12])
+
+#keep only the columns date and Daily Average Rating
+combined_ratings_country = combined_ratings_country[['Date','Country', 'Total Average Rating']]
+
+combined_ratings_country['Date'] = combined_ratings_country['Date'].dt.strftime('%m')
+
+#Multiple the ratings by a number to make the plot more readable
+combined_ratings_country['Total Average Rating'] = combined_ratings_country['Total Average Rating']
+
+
+
+#If the values in the beginning and at the end for a country is same then remove
+#the country from the dataframe
+for country in combined_ratings_country['Country'].unique():
+    country_data = combined_ratings_country[combined_ratings_country['Country'] == country]
+    if country_data['Total Average Rating'].iloc[0] == country_data['Total Average Rating'].iloc[-1]:
+        combined_ratings_country = combined_ratings_country[combined_ratings_country['Country'] != country]
+
+combined_ratings_country.to_csv('ratings_per_country.csv', index=False)
+
+
+
+
+
+
+
 
 

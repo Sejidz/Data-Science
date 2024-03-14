@@ -19,6 +19,18 @@ import geopandas as gpd
 from shapely.geometry import Point
 from bokeh.models import GeoJSONDataSource, LinearColorMapper, ColorBar
 from bokeh.palettes import Viridis256
+import geopandas as gpd
+import json
+import matplotlib as mpl
+import pylab as plt
+from bokeh.io import output_file, show, output_notebook, export_png
+from bokeh.models import ColumnDataSource, GeoJSONDataSource, LinearColorMapper, ColorBar, Dropdown, CustomJS, DatetimeTickFormatter, Legend
+from bokeh.plotting import figure, show
+from bokeh.palettes import Category10, brewer
+from bokeh.layouts import row, column
+
+import panel as pn
+import panel.widgets as pnw
 
 # Read the provided data into a DataFrame
 df = pd.read_csv("finalcombinedsales.csv")
@@ -202,11 +214,53 @@ panel4 = TabPanel(child=p_monthly_sales, title='Sales Volume per month')
 tabs2 = Tabs(tabs=[panel1, panel2, panel3, panel4])
 
 
+
+ratings_per_country = pd.read_csv('ratings_per_country.csv')
+
+
+output_file('crashes-ratings.html', 
+            title='Ratings per country')
+
+colors = Category10[10] * (len(ratings_per_country['Country'].unique()) // len(Category10[10]) + 1)
+fig2 = figure(
+    title='Ratings per country over time',
+    height=300,
+    width=600,
+    toolbar_location='below',
+    tools='pan, wheel_zoom, box_zoom, reset',
+    x_axis_label='Date', y_axis_label='Average Rating per month'
+)
+
+teller = 0
+items = []
+# Add the data to the figure where every country has its own line in the plot
+#The x-axis is the date and the y-axis is the daily average rating
+for country in ratings_per_country['Country'].unique():
+    teller += 1
+    country_data = ratings_per_country[ratings_per_country['Country'] == country]
+
+    line = fig2.line(country_data['Date'], country_data['Total Average Rating'], 
+             line_width=2,
+             color=colors[teller])
+    items.append((country, [line]))
+
+legend = Legend(items=items,
+location=(0, -30))
+fig2.add_layout(legend, 'right')
+
+fig2.legend.click_policy="hide"
+fig2.legend.label_text_font_size = '10pt'
+
 layout = column(tabs2, tabs)
 #add a row to the layout as fig
 layout2 = column(fig, r)
-layout = row(layout, layout2)
+layout = row(layout, layout2, fig2)
 
 show(layout)
 
+# Data handling
+
+
+    
+    
 
