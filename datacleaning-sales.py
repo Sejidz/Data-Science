@@ -17,7 +17,7 @@ sales_09 = pd.read_csv(
 sales_10 = pd.read_csv(
     'assignment1 data/sales_202110.csv'
 )
-# Combine the data into a single DataFrame
+# Combine the data into a single DataFrame.
 combined_sales = pd.concat([sales_06, sales_07, sales_08, sales_09, sales_10])
 
 # Write the changes back to the CSV file

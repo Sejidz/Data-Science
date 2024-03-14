@@ -25,7 +25,7 @@ crashes_11 = pd.read_csv(
 crashes_12 = pd.read_csv(
     'assignment1 data/stats_crashes_202112_overview.csv', encoding='utf-16-le'
 )
-# Combine the data into a single DataFrame
+# Combine the data into a single DataFrame.
 combined_crashes = pd.concat([crashes_06, crashes_07, crashes_08, crashes_09, crashes_10, crashes_11, crashes_12])
 
 
